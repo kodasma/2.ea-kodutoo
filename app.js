@@ -8,6 +8,7 @@ const TYPER = function () {
   }
   TYPER.instance_ = this
 
+  this.isReady = false;
   this.routes = TYPER.routes
   this.currentRoute = null
 
@@ -20,6 +21,7 @@ const TYPER = function () {
   this.word = null
   this.wordMinLength = 5
   this.guessedWords = 0
+  this.playerName = "Unknown"
   console.error()
 
   this.init()
@@ -39,6 +41,11 @@ TYPER.routes = {
 
       
     }
+  },
+  'score-view': {
+    'render': function() {
+      console.log('App')
+    }
   }
 }
 
@@ -56,6 +63,8 @@ TYPER.prototype = {
     this.loadWords()
 
     window.addEventListener('hashchange', this.routeChange.bind(this))
+    var start_button = document.querySelector('#start-button');
+    start_button.addEventListener('click', this.setName.bind(this));
 
     if (!window.location.hash) {
       window.location.hash = 'home-view'
@@ -88,7 +97,8 @@ TYPER.prototype = {
 
         typer.words = structureArrayByWordLength(wordsFromFile)
 
-        typer.start()
+        //typer.start()
+        typer.isReady = true;
       }
     }
 
@@ -101,6 +111,9 @@ TYPER.prototype = {
     this.word.Draw()
 
     window.addEventListener('keypress', this.keyPressed.bind(this))
+
+    var name = document.querySelector('#name').value;
+    this.playerName = name;
   },
 
   generateWord: function () {
@@ -126,7 +139,56 @@ TYPER.prototype = {
       score-= 5
     }
     this.word.Draw()
+  },
+  setName: function(ev) {
+    if (!this.isReady) {
+      console.log("Still loading...");
+      alert("Still loading...");
+      return false;
+    }
+    var name = document.querySelector('#name').value;
+    console.log("Name:", name, ev);
+    //localStorage.setItem('name', name);
+    this.start();
+  },
+  saveScore: function() {
+    var save = {Score: this.score, Name: this.name};
+    var scoreboard = localStorage.getItem("scoreboard");
+    if (scoreboard === undefined) {
+      scoreboard = [];
+    } else {
+      scoreboard = JSON.parse(scoreboard);
+    }
+
+    scoreboard.push(save);
+    localStorage.setItem("scoreboard", JSON.stringify(scoreboard));
+  },
+  showScoreboard: function() {
+    var scoreboard = localStorage.getItem("scoreboard");
+    if (scoreboard === undefined) {
+      return false; //vaata ise
+    }
+    scoreboard = JSON.parse(scoreboard);
+    
+    var makeRow = function (name, score) {
+      var node = document.createElement("div");
+      node.innerHTML = "<div class='scoreboard-name'>" + name+ "</div>" +
+        "<div class='scoreboard-score'>" + score + "</div>";
+      return node;
+    }
+
+    console.log(scoreboard);
+    var node = document.createElement("div");
+    for(var i in scoreboard) {
+      console.log(scoreboard[i]);
+      node.appendChild(makeRow(scoreboard[i].Name, scoreboard[i].Score));
+    }
+    var score_view = document.querySelector('#score-view');
+    score_view.innerHTML = ""; //mida iganes
+    score_view.appendChild(node);
+    //return node;
   }
+
 }
 
 /* WORD */
