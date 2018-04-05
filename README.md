@@ -7,16 +7,17 @@ Kevin Kodasma ja Kalmer Roopa
 2. Toimiv skoorisüsteem koos levelitega. [Kevin]
 3. Skoori arvutus on lahendatud keerulisemalt, kui olemasolevate sõnade loetlemine. [Kevin]
 4. Edetabel skoori kuvamiseks. [Kalmer]
-5. Tähe valesti trükkimisel kaotab mängija punkte.[Kevin]
+5. Tähe valesti trükkimisel kaotab mängija punkte. [Kevin]
+6. Taimer. [Kevin]
 * Skeem rakenduse tööprotsessist. [Kalmer]
 
 
 # Skoori moodustamine ja lisatud funktsionaalsuste tekstipõhine kirjeldus
 1. Skoori lisamine:
 	* Deklareerisin faili algul this.score = 0. Lisasin keyPressed funktsiooni
-	score+ = 1 ja score-=1 laused ehk kui kasutaja vajutab õiget tähte,
+	score+ = 1 ja score-=5 laused ehk kui kasutaja vajutab õiget tähte,
 	mis on vasakult esimene, lisatakse skoorile +1. Juhul kui vajutatakse
-	valet tähte võetakse skoorist 1 punkt maha (else). Järgmisena joonistasin
+	valet tähte võetakse skoorist 5 punkti maha (else). Järgmisena joonistasin
 	Draw funktsioonis skoori välja, sama meetodiga nagu ilmuvad trükitavad
 	sõnad.
 	* Tahtsin ka välja kuvada arvatud sõnade arvu. Selleks deklareerisin faili
@@ -37,7 +38,25 @@ Kevin Kodasma ja Kalmer Roopa
 	home-view ja app-view. Tegin updateMenu funktsiooni. Lisasin init
 	funktsiooni eventlisteneri hashchange ja tingimuse default hashi jaoks.
 	Üks leht avaleht, teine app ise.
-
+3. Taimeri ja mängu lõppu näitava ekraani lisamine:
+	* Lisasin gameTimer funktsiooni samal ajal deklareerides totalTime ja
+	timeLeft muutujad. Joonistasin timeri Draw funktsioonis välja. Kutsusin
+	gameTimer funktsiooni start funktsiooni sees välja. Lisasin määrangu 
+	gameOver = false typer funktsiooni. Tegin drawEndScreen funktsiooni.
+	Tegin endGame funktsiooni, mille sees määrasin gameOver = true ja kutsusin
+	välja drawEndScreen funktsiooni. GameTimer funktsiooni else osas kutsusin
+	välja endGame funktsiooni ehk kui aeg nulli jõuab lõpeb mäng.
+	[Jätkub mõnes mõttes all pool]
+4. Skoori salvestamise ja edetabeli nägemise või mängu uuesti alustamise võimalus:
+	* Tegin saveScore funktsiooni kasutades localStorage't. Peale seda kutsusin
+	saveScore funktsiooni välja ka endGame funktsioonis. Tegin drawScore
+	funktsiooni edetabeli väljakuvamiseks. Tegin gameOverButtonPressed funktsiooni
+	andes mängu lõpu ekraanil võimaluse tühikut vajutades mängu uuesti alustada
+	või e-d vajutades näha edetabelit. Ehk gameOverButtonPressed funktsioonis
+	tingimus, kui vajutatakse tühikut laetakse mänguks vajaminevad funktsioonid
+	uuesti. Kui vajutatakse e tähte kutsutakse välja drawScores funktsioon.
+	[Mängu lõpu ekraani, uuesti alustamis võimaluse ja edetabeliga oli ise teadmata
+	abiks Martin Somer. Aitäh.]
 
 
 
