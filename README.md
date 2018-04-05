@@ -12,7 +12,31 @@ Kevin Kodasma ja Kalmer Roopa
 
 
 # Skoori moodustamine ja lisatud funktsionaalsuste tekstipõhine kirjeldus
-
+1. Skoori lisamine:
+	* Deklareerisin faili algul this.score = 0. Lisasin keyPressed funktsiooni
+	score+ = 1 ja score-=1 laused ehk kui kasutaja vajutab õiget tähte,
+	mis on vasakult esimene, lisatakse skoorile +1. Juhul kui vajutatakse
+	valet tähte võetakse skoorist 1 punkt maha (else). Järgmisena joonistasin
+	Draw funktsioonis skoori välja, sama meetodiga nagu ilmuvad trükitavad
+	sõnad.
+	* Tahtsin ka välja kuvada arvatud sõnade arvu. Selleks deklareerisin faili
+	algul this.guessedWords = 0 ja lisasin keyPressed funktsiooni lause
+	guessedWords += 1. Lause läks tingimuse sisse, mida täidetakse juhul kui
+	sõna tähtede arv on võrdne nulliga ehk sõna on läbi kirjutatud. Draw
+	funktsioonis kuvasin arvatud sõnad välja samamoodi nagu skoori.
+	* Lisaks tekitasin leveli. Selleks faili alguses deklareerisin muutuja
+	this.level = 1. Oli vaja ka välja mõelda, mis juhul level tõuseb.
+	Soovisin, et level tõuseks iga 5 sõna tagant ehk iga kord kui hakatakse
+	kuvama ühe tähe võrra pikemaid sõnu. Andsin generateWord funktsioonis 
+	muutujale level väärtuse (parseInt(window.typer.guessedWords / 5) + 1),
+	mis tekitas soovitud tulemuse. Jällegi Draw funktsioonis joonistasin 
+	leveli välja samal viisil nagu eelnevad.
+2. Ühe-lehe-rakenduse lisamine:
+	* Typer funktsioonis deklareerisin routes ja currentRoute muutujad. Tegin
+	routeChange funktsiooni. Deklareerisin route-id TYPER.routes 'na -
+	home-view ja app-view. Tegin updateMenu funktsiooni. Lisasin init
+	funktsiooni eventlisteneri hashchange ja tingimuse default hashi jaoks.
+	Üks leht avaleht, teine app ise.
 
 
 
