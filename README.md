@@ -1,6 +1,21 @@
 # 2. kodutöö – kirjutamise mängu täiendamine
 
-Kevin Kodasma
+Kevin Kodasma ja Kalmer Roopa
+
+## Funktsionaalsused
+1. Eraldi ühe lehe app'ina mängu tutvustav leht, kus saab nime sisestada ja mängu käivitada. [Kevin]
+2. Toimiv skoorisüsteem koos levelitega. [Kevin]
+3. Skoori arvutus on lahendatud keerulisemalt, kui olemasolevate sõnade loetlemine. [Kevin]
+4. Edetabel skoori kuvamiseks. [Kalmer]
+5. Tähe valesti trükkimisel kaotab mängija punkte.[Kevin]
+* Skeem rakenduse tööprotsessist. [Kalmer]
+
+
+# Skoori moodustamine ja lisatud funktsionaalsuste tekstipõhine kirjeldus
+
+
+
+
 
 Mängu eesmärk on võimalikult kiiresti ekraanile tekkivaid sõnu ära trükkida. Sõnad on võetud [Eesti Keele Instituudi lehelt](http://www.eki.ee/tarkvara/wordlist/) – [lemmad2013](http://www.eki.ee/tarkvara/wordlist/lemmad2013.txt). Aluseks tuleb võtta kood **[eesrakenduste-arendamine-2018k/klahvimine](https://github.com/eesrakenduste-arendamine-2018k/klahvimine)**. 
 
