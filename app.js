@@ -26,9 +26,6 @@ const TYPER = function () {
   this.totalTime = 60;
   this.timeLeft = this.totalTime
   this.gameOver = false
-
-  //startGame()
-  //this.init()
 }
 
 window.TYPER = TYPER
@@ -44,11 +41,6 @@ TYPER.routes = {
       console.log('App')
     }
   }
-  /*'score-view': {
-    'render': function () {
-      console.log('Score')
-    }
-  }*/
 }
 
 TYPER.prototype = {
@@ -280,20 +272,5 @@ function saveScore(playerName, playerScore) {
       }
     }
     localStorage.setItem('arr', JSON.stringify(stored))
-  }
-}
-
-let name = ""
-
-function startGame() {
-  if (document.querySelector('#nameField').value != "") {
-    name = document.querySelector('#nameField').value
-    document.querySelector('#app-view').innerHTML = "<canvas></canvas>"
-    window.location.hash = 'app-view'
-    const typer = new TYPER()
-    window.typer = typer
-    typer.init()
-  } else {
-    alert("Kõigepealt sisesta nimi!")
   }
 }
