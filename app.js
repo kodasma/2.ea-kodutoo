@@ -274,3 +274,16 @@ function saveScore(playerName, playerScore) {
     localStorage.setItem('arr', JSON.stringify(stored))
   }
 }
+
+function startGame() {
+  if (document.querySelector('#nameField').value != "") {
+    name = document.querySelector('#nameField').value
+    document.querySelector('#app-view').innerHTML = "<canvas></canvas>"
+    window.location.hash = 'app-view'
+    const typer = new TYPER()
+    window.typer = typer
+    typer.init()
+  } else {
+    alert("Kõigepealt sisesta nimi!")
+  }
+}
